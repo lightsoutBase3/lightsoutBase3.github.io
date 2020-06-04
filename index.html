@@ -2,10 +2,16 @@
 <!-- saved from url=(0055)https://www.jaapsch.net/puzzles/javascript/lightj2k.htm -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lights Out 2000</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<style>
+    body{
+        background-color: #add8e6;
+    }
+</style>
 </head>
-<body bgcolor="#add8e6"  data-gr-c-s-loaded="true">
+<body  data-gr-c-s-loaded="true">
 
-<div align="center"><center>
+<div align="center" class="container"><center>
 <script language="JavaScript1.1" type="text/javascript">
 // <!--version=1.1;// -->
 </script>
@@ -45,114 +51,18 @@ var posit = new Array ();
 var hnt = new Array ();
 var mode = 0;   //0=normal  1=solving scrambled  2=edit  3=Hint
 
-var puz=new Array();
-puz[0]=new Array(0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 1,0,2,0,1, 1,0,2,0,1);
-puz[1]=new Array(0,1,0,0,0, 1,1,0,0,0, 0,0,2,0,0, 0,0,0,1,1, 0,0,0,1,0);
-puz[2]=new Array(0,2,0,0,0, 2,2,1,2,0, 0,1,1,2,2, 0,0,0,0,1, 0,0,0,1,0);
-puz[3]=new Array(0,0,2,0,0, 0,2,0,2,0, 0,0,0,0,0, 2,2,2,2,2, 0,2,0,2,0);
-puz[4]=new Array(1,1,0,0,0, 1,2,0,0,0, 2,2,2,0,0, 1,2,0,0,0, 1,1,0,0,0);
-puz[5]=new Array(1,1,1,0,0, 0,1,1,0,0, 0,1,1,1,0, 0,0,1,1,0, 0,0,1,1,1);
-puz[6]=new Array(0,1,0,0,0, 1,1,2,0,0, 0,2,1,2,0, 0,0,2,1,1, 0,0,0,1,0);
-puz[7]=new Array(1,2,2,0,0, 2,1,0,0,0, 1,0,0,0,2, 2,1,0,1,2, 1,2,1,2,1);
-puz[8]=new Array(0,2,2,2,0, 0,2,0,2,0, 2,0,2,0,2, 0,2,0,2,0, 0,2,2,2,0);
-puz[9]=new Array(0,0,0,0,0, 0,0,0,0,0, 1,2,0,0,0, 2,1,2,0,0, 1,2,1,0,0);
-puz[10]=new Array(1,0,2,0,1, 1,0,0,0,1, 0,1,1,1,0, 0,0,1,0,0, 0,0,0,0,0);
-puz[11]=new Array(0,1,0,0,0, 1,0,0,2,0, 2,2,0,2,2, 0,2,0,0,1, 0,0,0,1,0);
-puz[12]=new Array(0,0,0,0,0, 0,0,0,0,0, 1,1,0,0,0, 1,0,1,0,0, 1,1,1,0,0);
-puz[13]=new Array(1,1,1,1,1, 0,0,0,0,0, 0,1,0,1,0, 0,0,1,0,0, 0,0,0,0,0);
-puz[14]=new Array(0,0,0,0,0, 0,0,0,0,0, 2,0,0,0,2, 0,2,2,2,0, 0,0,2,0,0);
-puz[15]=new Array(1,2,1,2,1, 2,1,0,1,2, 1,0,0,0,1, 2,1,0,1,2, 1,2,1,2,1);
-puz[16]=new Array(0,1,1,1,0, 0,1,1,1,0, 1,1,2,1,1, 0,1,1,1,0, 0,1,1,1,0);
-puz[17]=new Array(0,2,2,2,0, 2,0,0,0,2, 2,0,2,0,2, 2,0,0,0,2, 0,2,2,2,0);
-puz[18]=new Array(1,1,1,0,0, 0,0,1,2,0, 2,0,2,0,2, 0,2,1,0,0, 0,0,1,1,1);
-puz[19]=new Array(1,2,1,0,0, 1,2,1,0,0, 0,2,0,0,0, 1,1,1,1,0, 0,1,1,1,1);
-puz[20]=new Array(1,2,1,2,1, 2,1,2,1,2, 1,2,2,2,1, 2,1,2,1,2, 1,2,1,2,1);
-puz[21]=new Array(1,0,0,2,0, 0,0,0,0,0, 0,0,0,0,0, 2,0,0,0,0, 0,0,0,0,0);
-puz[22]=new Array(0,0,0,0,0, 0,0,0,0,0, 1,0,2,0,1, 0,0,0,0,0, 0,0,0,0,0);
-puz[23]=new Array(2,1,2,1,2, 1,0,1,0,1, 2,1,2,1,2, 1,0,1,0,1, 2,1,2,1,2);
-puz[24]=new Array(2,2,2,2,2, 2,2,2,2,2, 2,2,1,2,2, 2,2,2,2,2, 2,1,2,1,2);
+// document.writeln("<div class='row'")
+// document.writeln("<div class='col-sm-3'")
 
-puz[25]=new Array(1,2,1,2,1, 2,1,1,1,2, 1,1,1,1,1, 2,1,1,1,2, 1,2,1,2,1);
-puz[26]=new Array(1,1,1,2,2, 1,1,1,2,2, 1,1,1,2,2, 1,1,1,2,2, 1,1,1,2,2);
-puz[27]=new Array(1,0,0,1,0, 2,1,1,0,1, 1,0,0,1,0, 2,1,0,1,0, 1,2,1,2,1);
-puz[28]=new Array(1,2,1,0,0, 1,1,1,2,0, 2,0,1,0,2, 0,2,1,1,1, 0,0,1,2,1);
-puz[29]=new Array(0,0,1,0,0, 2,0,2,0,2, 1,2,1,2,1, 2,0,2,0,2, 0,0,1,0,0);
-puz[30]=new Array(0,1,0,0,1, 1,1,2,2,0, 0,2,2,2,0, 0,2,2,1,1, 1,0,0,1,0);
-puz[31]=new Array(0,2,2,2,0, 0,0,0,0,0, 1,0,1,0,1, 0,0,0,0,0, 1,0,1,0,1);
-puz[32]=new Array(0,2,2,2,0, 0,0,0,0,0, 2,0,0,0,2, 0,0,0,0,0, 1,0,1,0,1);
-puz[33]=new Array(0,1,2,1,1, 0,1,1,2,1, 0,2,0,0,1, 0,0,0,2,1, 0,0,1,2,1);
-puz[34]=new Array(2,1,0,1,2, 2,1,0,1,2, 2,1,2,1,2, 2,1,0,1,2, 2,1,0,1,2);
-puz[35]=new Array(0,0,0,0,0, 2,0,1,0,2, 2,0,2,0,2, 2,0,1,0,2, 0,0,0,0,0);
-puz[36]=new Array(1,1,0,1,1, 0,2,1,0,0, 0,1,2,2,1, 1,1,2,2,1, 0,1,0,1,0);
-puz[37]=new Array(1,2,1,0,0, 1,1,2,2,0, 2,1,2,1,2, 0,2,2,1,1, 0,0,1,2,1);
-puz[38]=new Array(0,0,2,0,0, 0,0,2,0,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,1,0,0);
-puz[39]=new Array(0,0,2,0,0, 0,2,2,2,0, 1,1,1,1,1, 2,1,1,1,2, 2,2,1,2,2);
-puz[40]=new Array(2,0,1,0,2, 0,0,0,0,0, 1,0,2,0,1, 0,0,0,0,0, 2,0,1,0,2);
-puz[41]=new Array(1,0,2,0,1, 0,0,1,0,0, 2,1,2,1,2, 0,0,1,0,0, 1,0,2,0,1);
-puz[42]=new Array(0,0,0,0,0, 0,1,0,0,0, 0,0,1,0,0, 0,1,0,0,0, 0,0,0,0,0);
-puz[43]=new Array(2,2,2,1,2, 2,2,2,0,2, 2,0,2,2,0, 2,1,1,0,2, 1,0,0,0,2);
-puz[44]=new Array(1,1,2,1,2, 2,1,1,0,2, 1,2,1,1,0, 1,1,2,0,2, 1,1,1,0,2);
-puz[45]=new Array(1,2,2,2,1, 2,1,2,1,2, 2,2,1,2,2, 2,1,2,1,2, 1,2,2,2,1);
-puz[46]=new Array(0,0,1,0,0, 0,1,1,2,0, 0,0,0,1,1, 1,2,1,0,1, 2,2,0,2,2);
-puz[47]=new Array(0,0,0,0,0, 2,0,1,0,2, 1,0,1,0,1, 2,0,1,0,2, 0,0,0,0,0);
-puz[48]=new Array(0,1,0,0,0, 0,1,0,0,0, 0,0,2,0,0, 0,0,0,1,1, 1,0,0,0,0);
-puz[49]=new Array(0,1,1,1,0, 0,1,2,1,0, 0,1,1,1,0, 0,1,1,1,0, 0,0,0,0,0);
-
-puz[50]=new Array(0,0,1,0,0, 2,0,0,0,2, 2,0,1,0,2, 2,0,0,0,2, 0,0,1,0,0);
-puz[51]=new Array(1,0,1,0,1, 0,0,0,0,0, 1,0,2,0,1, 0,0,0,0,0, 1,0,1,0,1);
-puz[52]=new Array(0,1,1,1,0, 0,1,1,1,0, 1,2,2,2,1, 1,2,2,2,1, 1,2,2,2,1);
-puz[53]=new Array(2,0,0,0,2, 1,0,0,0,1, 1,0,0,0,1, 1,0,0,0,1, 2,0,0,0,2);
-puz[54]=new Array(0,2,0,2,0, 0,0,0,0,0, 2,0,0,0,2, 0,1,1,1,0, 0,0,1,0,0);
-puz[55]=new Array(1,0,1,0,1, 0,0,0,0,0, 1,0,1,0,1, 0,0,0,0,0, 1,0,1,0,1);
-puz[56]=new Array(1,2,2,2,1, 1,2,2,2,1, 1,2,2,2,1, 1,2,2,2,1, 1,2,2,2,1);
-puz[57]=new Array(0,0,0,0,0, 0,0,0,0,0, 0,1,2,1,0, 0,0,0,0,0, 0,0,0,0,0);
-puz[58]=new Array(0,0,1,0,0, 2,2,0,2,2, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0,0);
-puz[59]=new Array(0,0,0,0,0, 0,0,0,0,0, 2,0,0,0,2, 0,0,0,0,0, 0,0,0,0,0);
-puz[60]=new Array(0,2,0,2,0, 0,0,2,0,0, 2,0,0,0,2, 0,0,2,0,0, 0,2,0,2,0);
-puz[61]=new Array(0,0,0,0,0, 0,0,0,0,0, 0,2,1,2,0, 0,0,0,0,0, 0,0,0,0,0);
-puz[62]=new Array(1,1,0,0,0, 1,1,0,0,0, 1,1,2,0,0, 1,1,0,0,0, 1,1,0,0,0);
-puz[63]=new Array(1,0,1,0,1, 0,1,0,1,0, 1,0,1,0,1, 0,1,0,1,0, 1,0,1,0,1);
-puz[64]=new Array(1,1,1,1,1, 0,0,1,0,0, 0,0,1,0,0, 0,0,1,0,0, 0,0,2,0,0);
-puz[65]=new Array(1,1,1,1,1, 1,2,2,2,1, 1,2,2,2,1, 1,2,2,2,1, 1,1,1,1,1);
-puz[66]=new Array(1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1);
-puz[67]=new Array(0,0,0,0,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,1,0,0, 0,0,1,0,0);
-puz[68]=new Array(0,1,0,1,0, 0,0,0,0,0, 1,0,0,0,1, 0,1,1,1,0, 0,0,1,0,0);
-puz[69]=new Array(0,2,2,2,0, 0,0,2,0,0, 0,0,2,0,0, 0,0,2,0,0, 0,2,2,2,0);
-puz[70]=new Array(0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,1,0,0);
-puz[71]=new Array(0,0,0,0,0, 0,2,0,2,0, 1,1,1,1,1, 0,0,1,0,0, 0,1,1,1,0);
-puz[72]=new Array(2,0,2,0,2, 0,2,0,2,0, 2,0,2,0,2, 0,2,0,2,0, 2,0,2,0,2);
-puz[73]=new Array(0,1,1,1,0, 0,1,0,1,0, 0,1,1,1,0, 0,1,0,1,0, 0,1,1,1,0);
-puz[74]=new Array(1,1,1,0,0, 1,0,0,0,0, 1,1,0,0,0, 1,0,0,0,0, 1,1,1,0,0);
-
-puz[75]=new Array(1,0,1,0,1, 0,1,1,1,0, 1,1,1,1,1, 0,1,1,1,0, 1,0,1,0,1);
-puz[76]=new Array(2,2,2,1,1, 2,2,2,1,1, 2,2,2,1,1, 2,2,2,1,1, 2,2,2,1,1);
-puz[77]=new Array(0,0,0,0,0, 0,0,0,0,0, 2,0,2,0,2, 0,0,0,0,0, 0,0,0,0,0);
-puz[78]=new Array(0,2,0,2,0, 0,1,0,1,0, 0,2,0,2,0, 0,1,0,1,0, 0,2,0,2,0);
-puz[79]=new Array(2,0,0,0,2, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 2,0,0,0,2);
-puz[80]=new Array(2,2,2,2,2, 2,2,2,2,2, 2,2,2,2,2, 2,2,2,2,2, 2,2,2,2,2);
-puz[81]=new Array(1,0,0,0,1, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0,0, 1,0,0,0,1);
-puz[82]=new Array(1,1,1,1,1, 1,2,1,2,1, 1,1,2,1,1, 1,2,1,2,1, 1,1,1,1,1);
-puz[83]=new Array(0,0,0,0,0, 2,0,2,0,2, 2,2,2,2,2, 2,0,2,0,2, 0,0,0,0,0);
-puz[84]=new Array(0,2,0,0,0, 0,1,0,0,0, 0,2,0,0,0, 0,1,0,1,0, 0,2,0,2,0);
-puz[85]=new Array(2,2,2,2,2, 2,2,2,2,2, 2,2,1,2,2, 2,2,2,2,2, 2,2,2,2,2);
-puz[86]=new Array(0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 1,0,2,0,1);
-puz[87]=new Array(0,0,0,0,0, 0,0,0,0,0, 2,2,0,2,2, 0,0,0,0,0, 0,0,0,0,0);
-puz[88]=new Array(2,0,2,0,2, 0,2,2,2,0, 0,0,1,0,0, 0,0,0,0,0, 2,0,0,0,2);
-puz[89]=new Array(2,2,0,1,1, 2,2,0,1,1, 2,2,2,2,2, 2,2,2,1,1, 2,2,2,1,1);
-puz[90]=new Array(0,0,0,0,0, 2,0,0,0,2, 2,0,0,0,2, 2,0,0,0,2, 0,0,0,0,0);
-puz[91]=new Array(2,2,2,0,0, 2,0,0,0,0, 2,2,0,0,0, 2,0,0,0,0, 2,2,2,0,0);
-puz[92]=new Array(1,2,1,2,1, 2,1,2,1,2, 1,2,0,2,1, 2,1,2,1,2, 1,2,1,2,1);
-puz[93]=new Array(2,1,1,1,2, 1,0,1,2,2, 1,0,0,1,2, 2,1,2,2,1, 1,1,0,1,1);
-puz[94]=new Array(2,1,2,1,2, 2,0,2,0,2, 2,0,2,0,2, 2,2,2,2,2, 2,0,2,0,2);
-
-puz[95]=new Array(0,0,2,2,2, 0,0,1,0,1, 1,2,1,1,0, 0,2,1,0,2, 0,2,0,0,1);
-puz[96]=new Array(2,2,1,0,0, 0,2,1,1,2, 2,0,0,0,2, 1,1,0,1,2, 2,1,2,2,0);
-puz[97]=new Array(2,0,2,0,0, 2,0,0,2,0, 1,1,2,1,0, 2,0,0,1,2, 1,1,2,2,0);
-puz[98]=new Array(2,2,1,2,2, 0,2,1,2,0, 2,0,1,0,2, 0,2,2,2,0, 2,0,2,0,2);
-puz[99]=new Array(1,0,2,0,1, 2,1,2,1,2, 2,0,1,0,2, 0,0,0,0,0, 2,0,0,0,2);
+// document.write("<a href='javascript:void hint();'><button height=16 width=48>Solve</button><\/a>");
+//   document.write("<a href='javascript:void mix();'><img src='images/buttons/mix.gif' height=16 width=48 border=0><\/a>");
+//   document.write("<a href='javascript:void reset();'><img src='images/buttons/reset.gif' height=16 width=48 border=0><\/a>");
+//   document.write("<a href='javascript:void edit();'><img src='images/buttons/edit.gif' height=16 width=48 border=0 name='edit'><\/a>");
+//   document.write("<a href='javascript:void help();'><img src='images/buttons/help.gif' height=16 width=48 border=0><\/a>");
+//     document.writeln("</div>")
 
 document.writeln("<table cellpadding=0 cellspacing=0 border=0>");
-document.write("<tr><td colspan=7 align=center>");
+// document.write("<tr><td colspan=7 align=center>");
 // document.writeln("<form name=puzform>Puzzle:");
 // document.writeln("<select name=puzzle size=1 onChange='initpuz(this.selectedIndex); return false;'>");
 // document.writeln("<option>---");
@@ -163,12 +73,12 @@ document.write("<tr><td colspan=7 align=center>");
 // }
 // document.writeln("<\/select><\/form><\/td><\/tr>");
 
-document.write("<tr><td colspan=7>");
-  document.write("<a href='javascript:void hint();'><img src='images/buttons/solve.gif' height=16 width=48 border=0 name='hint'><\/a>");
-  document.write("<a href='javascript:void mix();'><img src='images/buttons/mix.gif' height=16 width=48 border=0><\/a>");
-  document.write("<a href='javascript:void reset();'><img src='images/buttons/reset.gif' height=16 width=48 border=0><\/a>");
-  document.write("<a href='javascript:void edit();'><img src='images/buttons/edit.gif' height=16 width=48 border=0 name='edit'><\/a>");
-  document.write("<a href='javascript:void help();'><img src='images/buttons/help.gif' height=16 width=48 border=0><\/a>");
+document.write("<tr ><td colspan=7>");
+  document.write("<a href='javascript:void hint();'><button class='btn btn-success m-3' height=16 width=48 border=0 name='hint'>Solve</button><\/a>");
+  document.write("<a href='javascript:void mix();'><button class='btn btn-info m-3' height=16 width=48 border=0>Random</button><\/a>");
+  document.write("<a href='javascript:void reset();'><button class='btn btn-warning m-3' height=16 width=48 border=0>Reset</button><\/a>");
+  document.write("<a href='javascript:void edit();'><button id='setbtn' class='btn btn-danger m-3' height=16 width=48 border=0 name='edit'>Set</button><\/a>");
+//   document.write("<a href='javascript:void help();'><img src='images/buttons/help.gif' height=16 width=48 border=0><\/a>");
   document.writeln("<\/td><\/tr>");
 
 for(var i=0;i<=4;i++){
@@ -181,6 +91,9 @@ for(var i=0;i<=4;i++){
     document.writeln("<td width=50><\/td><\/tr>");
 }
 document.writeln("<\/table>");
+// document.writeln("</div>")
+
+// document.writeln("</div>")
 function help(){
     alert("Lights-Out 2000 Help\n\nAim: Press the buttons to turn off the lights.\n"
         +"Other controls:\n"
@@ -231,8 +144,8 @@ function showbrd(){
         else c+=9;
         document.images["brd"+i+""+j].src=pics[c].src;
     }
-    if(mode==2) document.images["edit"].src=pics[13].src;
-    else document.images["edit"].src=pics[12].src;
+    if(mode==2) document.getElementById("setbtn").setAttribute("style", "color: blue");
+    else document.getElementById("setbtn").setAttribute("style", "");
     if(mode==3) document.images["hint"].src=pics[15].src;
     else document.images["hint"].src=pics[14].src;
 }
@@ -318,7 +231,9 @@ function edit(){
         if(hintson()){
             mode=1;
             showbrd();
-        }else alert("This position cannot be solved!");
+        }
+        if(!hintson())
+            alert("This position cannot be solved!")
     }else {
         //start editing
         mode=2;
